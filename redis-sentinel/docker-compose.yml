@@ -4,61 +4,55 @@ services:
     image: redis:latest
     container_name: redis-1
     restart: always
-    command: redis-server /etc/redis/redis.conf
-    ports:
-    - 6379:6379
+    entrypoint: redis-server /etc/redis/redis.conf
+    network_mode: host
     volumes:
-    - /home/iguochan/docker/redis/data/data1:/data
-    - /home/iguochan/docker/redis/conf/redis-1.conf:/etc/redis/redis.conf
+    - ./redis/data/data1:/data
+    - ./redis/conf/redis-1.conf:/etc/redis/redis.conf
 
   redis-2:
     image: redis:latest
     container_name: redis-2
     restart: always
-    command: redis-server /etc/redis/redis.conf
-    ports:
-      - 6380:6379
+    entrypoint: redis-server /etc/redis/redis.conf
+    network_mode: host
     volumes:
-      - /home/iguochan/docker/redis/data/data2:/data
-      - /home/iguochan/docker/redis/conf/redis-2.conf:/etc/redis/redis.conf
+      - ./redis/data/data2:/data
+      - ./redis/conf/redis-2.conf:/etc/redis/redis.conf
 
   redis-3:
     image: redis:latest
     container_name: redis-3
     restart: always
-    command: redis-server /etc/redis/redis.conf
-    ports:
-      - 6381:6379
+    entrypoint: redis-server /etc/redis/redis.conf
+    network_mode: host
     volumes:
-      - /home/iguochan/docker/redis/data/data3:/data
-      - /home/iguochan/docker/redis/conf/redis-3.conf:/etc/redis/redis.conf
+      - ./redis/data/data3:/data
+      - ./redis/conf/redis-3.conf:/etc/redis/redis.conf
 
   sentinel-1:
     image: redis:latest
     container_name: sentinel-1
     restart: always
-    command: redis-sentinel /etc/redis/redis.conf
-    ports:
-      - 26379:26379
+    entrypoint: redis-sentinel /etc/redis/sentinel.conf
+    network_mode: host
     volumes:
-      - /home/iguochan/docker/redis/conf/sentinel.conf:/etc/redis/redis.conf
+      - ./redis/conf/sentinel-1.conf:/etc/redis/sentinel.conf
 
   sentinel-2:
     image: redis:latest
     container_name: sentinel-2
     restart: always
-    command: redis-sentinel /etc/redis/redis.conf
-    ports:
-      - 26380:26379
+    entrypoint: redis-sentinel /etc/redis/sentinel.conf
+    network_mode: host
     volumes:
-      - /home/iguochan/docker/redis/conf/sentinel.conf:/etc/redis/redis.conf
+      - ./redis/conf/sentinel-2.conf:/etc/redis/sentinel.conf
 
   sentinel-3:
     image: redis:latest
     container_name: sentinel-3
     restart: always
-    command: redis-sentinel /etc/redis/redis.conf
-    ports:
-      - 26381:26379
+    entrypoint: redis-sentinel /etc/redis/sentinel.conf
+    network_mode: host
     volumes:
-      - /home/iguochan/docker/redis/conf/sentinel.conf:/etc/redis/redis.conf
+      - ./redis/conf/sentinel-3.conf:/etc/redis/sentinel.conf

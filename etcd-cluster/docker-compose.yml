@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   etcd0:
-    image: "bitnami/etcd:latest"
+    image: "quay.io/coreos/etcd"
     container_name: etcd0
     ports:
       - "12380:2380"
@@ -19,7 +19,7 @@ services:
       - ETCD_INITIAL_CLUSTER_STATE=new
 
   etcd1:
-    image: "bitnami/etcd:latest"
+    image: "quay.io/coreos/etcd"
     container_name: etcd1
     ports:
       - "22380:2380"
@@ -36,7 +36,7 @@ services:
       - ETCD_INITIAL_CLUSTER_STATE=new
 
   etcd2:
-    image: "bitnami/etcd:latest"
+    image: "quay.io/coreos/etcd"
     container_name: etcd2
     ports:
       - "32380:2380"

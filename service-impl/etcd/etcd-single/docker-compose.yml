@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  etcd:
+    image: "quay.io/coreos/etcd"
+    container_name: etcd
+    network_mode: host
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_NAME=etcd
+      - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://192.168.0.102:2379
